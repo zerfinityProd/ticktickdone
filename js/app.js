@@ -7,6 +7,68 @@
   'use strict';
 
   /* ==========================================================================
+     SVG Icon Library (Lucide/Feather-style 24x24 line icons)
+     ========================================================================== */
+  const ICONS = {
+    // Category icons
+    'furniture': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></svg>',
+    'electronics': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/><line x1="12" x2="12" y1="16" y2="20"/></svg>',
+    'automobiles': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>',
+    'home-interior': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7.5 9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/><path d="M19 8V5h-2v1.5"/></svg>',
+    'jewelry': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>',
+    'fashion': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>',
+
+    // Product icons
+    'sofa': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M4 18v3"/><path d="M20 18v3"/><path d="M12 5v6"/></svg>',
+    'dining-table': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="3" rx="1"/><line x1="5" y1="10" x2="4" y2="20"/><line x1="19" y1="10" x2="20" y2="20"/><line x1="5" y1="13" x2="19" y2="13"/></svg>',
+    'bed-mattress': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 12h18a2 2 0 0 1 2 2v6"/><path d="M2 18h20"/><path d="M6 12V9a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/></svg>',
+    'wardrobe': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="20" x="3" y="2" rx="2"/><line x1="12" x2="12" y1="2" y2="22"/><line x1="9" x2="9.01" y1="12" y2="12"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="6" x2="6" y1="22" x2="6" y2="23"/><line x1="18" x2="18" y1="22" x2="18" y2="23"/></svg>',
+    'office-chair': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M5 14h14a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1Z"/><line x1="12" y1="17" x2="12" y2="20"/><path d="m6 22 6-2 6 2"/><circle cx="5" cy="22" r="1"/><circle cx="19" cy="22" r="1"/></svg>',
+    'smartphone': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><line x1="11" x2="13" y1="18" y2="18"/></svg>',
+    'laptop': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
+    'television': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="4" rx="2"/><line x1="7" x2="17" y1="21" y2="21"/><line x1="12" x2="12" y1="18" y2="21"/></svg>',
+    'washing-machine': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><circle cx="12" cy="13" r="5"/><circle cx="12" cy="13" r="2"/><line x1="7" y1="6" x2="9" y2="6"/><circle cx="16" cy="6" r="0.5" fill="currentColor"/></svg>',
+    'refrigerator': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><line x1="5" x2="19" y1="9" y2="9"/><line x1="8" x2="8" y1="5" y2="7"/><line x1="8" x2="8" y1="12" y2="15"/></svg>',
+    'new-car': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h-1v-4c0-.6.4-1 1-1l2.5-4.5A2 2 0 0 1 8.2 6.5h4.8"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/><path d="M19 17h2c.6 0 1-.4 1-1v-2"/><path d="m19 2 .8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8Z"/></svg>',
+    'used-car': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/><path d="M19 17h2c.6 0 1-.4 1-1v-3l-1.5-3.5"/><path d="M2 13v3c0 .6.4 1 1 1"/><path d="M4.5 12.5 7 8a1.5 1.5 0 0 1 1.3-.8h5.2"/><path d="m15 5 2.5 2.5L22 3"/></svg>',
+    'two-wheeler': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M5 17h4l4-8h4"/><path d="m15 9 3 4"/><path d="M17 6h2"/><path d="M9 17l3-8"/></svg>',
+    'paint': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="6" x="2" y="2" rx="2"/><path d="M10 8v2a2 2 0 0 0 2 2h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1"/><rect width="4" height="6" x="12" y="16" rx="1"/></svg>',
+    'tiles-flooring': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>',
+    'modular-kitchen': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="12" y1="8" x2="12" y2="21"/><circle cx="7" cy="13" r="1"/><circle cx="17" cy="13" r="1"/><path d="M6 4h4v4H6z"/><circle cx="16" cy="5" r="2"/></svg>',
+    'curtains-blinds': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="2" y1="3" x2="22" y2="3"/><path d="M3 3c3 4 3 10 0 18"/><path d="M21 3c-3 4-3 10 0 18"/><line x1="12" y1="3" x2="12" y2="21"/></svg>',
+    'gold-jewelry': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="7"/><path d="m10 7 2-3 2 3-2 2-2-2Z"/></svg>',
+    'diamond-jewelry': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>',
+    'formal-suit': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l4 5 4-5h4v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4Z"/><path d="m8 4 4 10 4-10"/><path d="m11 9 1 2 1-2-1-1z"/><line x1="12" y1="14" x2="12" y2="21"/></svg>',
+    'leather-shoes': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h19a1 1 0 0 0 1-1c0-2-2-4.5-5-5-2-.3-3.5-2-5-3.5L10 6H7v5L4 13c-1.3.8-2 2-2 4Z"/><path d="M2 17v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2"/><path d="M16 17v2a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2"/></svg>',
+
+    // UI icons
+    'search': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>',
+    'arrow-right': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+    'check': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    'chevron-down': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+    'star': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+    'share': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>',
+    'download': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
+    'reset': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>',
+    'lightbulb': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>',
+    'info': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>',
+    'celebration': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12a2 2 0 0 1 2 2v3a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V6a2 2 0 0 1 2-2Z"/></svg>',
+    'clipboard': '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>'
+  };
+
+  // Aliases for compatibility with IDs and alternative names
+  ICONS['wardrobe-closet'] = ICONS['wardrobe'];
+  ICONS['vehicles'] = ICONS['automobiles'];
+  ICONS['real-estate'] = ICONS['home-interior'];
+  ICONS['used-laptop'] = ICONS['laptop'];
+  ICONS['mattress'] = ICONS['bed-mattress'];
+  ICONS['apartment-inspection'] = ICONS['home-interior'];
+
+  function getIcon(key, fallbackKey = 'clipboard') {
+    return ICONS[key] || ICONS[fallbackKey] || '';
+  }
+
+  /* ==========================================================================
      Fallback Data (Used only if data.js / window.APP_DATA is not yet defined)
      ========================================================================== */
   const DEFAULT_APP_DATA = {
@@ -14,14 +76,14 @@
       {
         id: 'furniture',
         name: 'Furniture & Home',
-        icon: '🛋️',
+        icon: 'furniture',
         description: 'Ensure structural strength, foam durability, fabric grade, and long-term comfort before buying.',
         accentColor: '#4CAF50',
         products: [
           {
             id: 'sofa',
             name: 'Sofa / Couch',
-            icon: '🛋️',
+            icon: 'sofa',
             description: 'Evaluate frame construction, foam density, suspension springs, and fabric durability.',
             generalTips: [
               'Sit in multiple positions: lounging, sitting upright, and on the edges.',
@@ -83,7 +145,7 @@
           {
             id: 'mattress',
             name: 'Mattress',
-            icon: '🛏️',
+            icon: 'bed-mattress',
             description: 'Evaluate spine alignment, pocket coils, motion isolation, and trial return policies.',
             generalTips: [
               'Lie down on the mattress for at least 10 minutes in your actual sleep position.',
@@ -132,14 +194,14 @@
       {
         id: 'vehicles',
         name: 'Used Vehicles',
-        icon: '🚗',
+        icon: 'automobiles',
         description: 'Comprehensive inspection checks for used cars, two-wheelers, and electric vehicles.',
         accentColor: '#1976D2',
         products: [
           {
             id: 'used-car',
             name: 'Used Car',
-            icon: '🚗',
+            icon: 'used-car',
             description: 'Inspect engine health, chassis damage, odometer fraud, and ownership documents.',
             generalTips: [
               'Always inspect the car in broad daylight, never when wet or at night.',
@@ -195,14 +257,14 @@
       {
         id: 'electronics',
         name: 'Electronics & Gadgets',
-        icon: '💻',
+        icon: 'electronics',
         description: 'Inspection routines for pre-owned laptops, smartphones, cameras, and audio gear.',
         accentColor: '#F57F17',
         products: [
           {
             id: 'used-laptop',
             name: 'Used Laptop / MacBook',
-            icon: '💻',
+            icon: 'laptop',
             description: 'Check battery health cycles, display dead pixels, thermal throttling, and iCloud / BIOS locks.',
             generalTips: [
               'Bring a USB drive with diagnostic tools (e.g., HWMonitor, Display test images).',
@@ -251,14 +313,14 @@
       {
         id: 'real-estate',
         name: 'Apartments & Rentals',
-        icon: '🏢',
+        icon: 'home-interior',
         description: 'Crucial checklist for property walkthroughs, lease inspections, and handover audits.',
         accentColor: '#9C27B0',
         products: [
           {
             id: 'apartment-inspection',
             name: 'Apartment Move-In Walkthrough',
-            icon: '🏢',
+            icon: 'home-interior',
             description: 'Inspect plumbing pressure, water seepage, electrical outlets, acoustic insulation, and locks.',
             generalTips: [
               'Photograph and timestamp every pre-existing scuff, scratch, and crack before signing the lease.',
@@ -556,7 +618,7 @@
         : (typeof cat.products === 'object' && cat.products !== null ? Object.values(cat.products) : (cat.items || []));
       const count = products.length;
       const countLabel = count === 1 ? '1 checklist' : `${count} checklists`;
-      const accentColor = cat.accentColor || cat.color;
+      const accentColor = cat.accentColor || cat.color || '#2E7D32';
       const borderStyle = accentColor ? `style="border-left-color: ${accentColor};"` : '';
 
       return `
@@ -569,7 +631,7 @@
           aria-label="View category ${escapeHtml(cat.name)}"
         >
           <div class="category-card-top">
-            <span class="card-icon" aria-hidden="true">${cat.icon || '📁'}</span>
+            <span class="card-icon" aria-hidden="true" style="background: ${accentColor}12; color: ${accentColor};">${getIcon(cat.icon || cat.id, 'clipboard')}</span>
             <span class="card-badge">${countLabel}</span>
           </div>
           <h2 class="category-card-title">${escapeHtml(cat.name)}</h2>
@@ -586,7 +648,7 @@
       <section class="hero">
         <div class="hero-inner">
           <div class="hero-badge">
-            <span>🎯</span> Smart Purchase Decisions
+            <span class="hero-badge-icon" aria-hidden="true">${getIcon('star')}</span> Smart Purchase Decisions
           </div>
           <h1>Never Buy Without <span class="highlight">Checking Twice</span></h1>
           <p>Don't regret your next big purchase. Interactive, expert-curated checklists for sofas, cars, apartments, electronics, and more.</p>
@@ -604,7 +666,7 @@
         <div class="categories-grid" role="list">
           ${categoriesHtml || `
             <div class="empty-state">
-              <div class="empty-state-icon">📋</div>
+              <div class="empty-state-icon">${getIcon('clipboard')}</div>
               <h3 class="empty-state-title">No categories found</h3>
               <p class="empty-state-text">Check your data source or configure categories.</p>
             </div>
@@ -627,7 +689,7 @@
       setViewContent(`
         <div class="container" style="padding-top: 3rem;">
           <div class="empty-state">
-            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-icon">${getIcon('search')}</div>
             <h2 class="empty-state-title">Category Not Found</h2>
             <p class="empty-state-text">We couldn't find the requested category. It may have been moved or removed.</p>
             <a href="#/" class="btn btn-primary" style="margin-top: 1.5rem;">&larr; Back to Home</a>
@@ -640,6 +702,8 @@
     updateBreadcrumb([
       { title: category.name, hash: `#/category/${category.id}` }
     ]);
+
+    const accentColor = category.accentColor || category.color || '#2E7D32';
 
     const products = Array.isArray(category.products)
       ? category.products
@@ -660,7 +724,7 @@
           aria-label="View checklist for ${escapeHtml(prod.name)}"
         >
           <div class="category-card-top">
-            <span class="card-icon" aria-hidden="true">${prod.icon || category.icon || '📋'}</span>
+            <span class="card-icon" aria-hidden="true" style="background: ${accentColor}12; color: ${accentColor};">${getIcon(prod.icon || prod.id, category.id)}</span>
             <span class="card-badge">${countLabel}</span>
           </div>
           <h2 class="product-card-title">${escapeHtml(prod.name)}</h2>
@@ -677,7 +741,7 @@
       <section class="container" style="padding-top: 2rem;">
         <div class="section-header">
           <div>
-            <h1 class="section-title">${category.icon || ''} ${escapeHtml(category.name)}</h1>
+            <h1 class="section-title"><span class="category-header-icon" style="color: ${accentColor}; margin-right: 0.5rem; display: inline-flex; vertical-align: middle;">${getIcon(category.icon || category.id)}</span>${escapeHtml(category.name)}</h1>
             <p class="section-subtitle">${escapeHtml(category.description || 'Choose an item to review its purchase checklist.')}</p>
           </div>
           <a href="#/" class="back-btn" aria-label="Back to all categories">&larr; All Categories</a>
@@ -686,7 +750,7 @@
         <div class="products-grid" role="list">
           ${productsHtml || `
             <div class="empty-state">
-              <div class="empty-state-icon">📋</div>
+              <div class="empty-state-icon">${getIcon('clipboard')}</div>
               <h3 class="empty-state-title">No checklists available yet</h3>
               <p class="empty-state-text">Checklists for this category are coming soon.</p>
             </div>
@@ -709,7 +773,7 @@
       setViewContent(`
         <div class="container" style="padding-top: 3rem;">
           <div class="empty-state">
-            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-icon">${getIcon('search')}</div>
             <h2 class="empty-state-title">Checklist Not Found</h2>
             <p class="empty-state-text">The requested checklist could not be found.</p>
             <a href="#/" class="btn btn-primary" style="margin-top: 1.5rem;">&larr; Back to Home</a>
@@ -724,6 +788,7 @@
       { title: product.name, hash: `#/category/${category.id}/${product.id}` }
     ]);
 
+    const accentColor = category.accentColor || category.color || '#2E7D32';
     const checklist = product.checklist || product.items || [];
     const checkedSet = getCheckedItems(categoryId, productId);
     const { checked, total, percentage } = getProgress(categoryId, productId);
@@ -733,7 +798,7 @@
     const generalTipsHtml = generalTips.length > 0 ? `
       <div class="general-tips">
         <button type="button" class="tips-toggle" id="general-tips-toggle" aria-expanded="false">
-          <span>💡 Inspection Master Tips (${generalTips.length})</span>
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">${getIcon('lightbulb')} Inspection Master Tips (${generalTips.length})</span>
           <span class="chevron" aria-hidden="true">&#9660;</span>
         </button>
         <div class="tips-content" id="general-tips-content">
@@ -751,7 +816,7 @@
 
       const proTipHtml = item.proTip ? `
         <button type="button" class="pro-tip-toggle" data-toggle-tip="tip-${idx}" aria-expanded="false">
-          💡 Pro Tip
+          <span class="pro-tip-icon">${getIcon('lightbulb')}</span> Pro Tip
         </button>
         <div class="pro-tip" id="tip-${idx}">
           ${escapeHtml(item.proTip)}
@@ -798,7 +863,7 @@
 
         <section class="product-header">
           <div class="product-header-top">
-            <span class="product-header-icon" aria-hidden="true">${product.icon || category.icon || '📋'}</span>
+            <span class="product-header-icon" aria-hidden="true" style="color: ${accentColor};">${getIcon(product.icon || product.id, category.id)}</span>
             <div class="product-header-info">
               <span class="product-category-tag">${escapeHtml(category.name)}</span>
               <h1>${escapeHtml(product.name)}</h1>
@@ -821,7 +886,7 @@
         <section class="checklist-list" role="list">
           ${itemsHtml || `
             <div class="empty-state">
-              <div class="empty-state-icon">📋</div>
+              <div class="empty-state-icon">${getIcon('clipboard')}</div>
               <h3 class="empty-state-title">No items in this checklist yet</h3>
             </div>
           `}
@@ -835,7 +900,7 @@
             data-category-id="${escapeHtml(categoryId)}" 
             data-product-id="${escapeHtml(productId)}"
           >
-            🔄 Reset All
+            ${getIcon('reset')} Reset All
           </button>
           <button 
             type="button" 
@@ -844,7 +909,7 @@
             data-category-id="${escapeHtml(categoryId)}" 
             data-product-id="${escapeHtml(productId)}"
           >
-            📤 Share
+            ${getIcon('share')} Share
           </button>
           <button 
             type="button" 
@@ -853,7 +918,7 @@
             data-category-id="${escapeHtml(categoryId)}" 
             data-product-id="${escapeHtml(productId)}"
           >
-            📥 Download Checklist
+            ${getIcon('download')} Download Checklist
           </button>
         </footer>
       </div>
@@ -861,7 +926,7 @@
       <!-- Celebration Modal Placeholder -->
       <div id="celebration-modal" class="celebration" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="celebration-title">
         <div class="celebration-content">
-          <span class="celebration-icon" aria-hidden="true">🎉</span>
+          <span class="celebration-icon" aria-hidden="true">${getIcon('celebration')}</span>
           <h2 id="celebration-title" class="celebration-title">Ready to Buy!</h2>
           <p class="celebration-subtitle">You have verified every critical checkpoint for this <strong>${escapeHtml(product.name)}</strong>. You can make this purchase with 100% confidence!</p>
           <div class="celebration-actions">
@@ -873,8 +938,6 @@
     `;
 
     setViewContent(html);
-
-    // If already 100% complete upon load, do not spam celebration, but if newly completed, show it.
   }
 
   function checkCompletionCelebration(categoryId, productId) {
@@ -944,7 +1007,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
         await navigator.clipboard.writeText(text);
-        showToast('📋 Checklist copied to clipboard!');
+        showToast('Checklist copied to clipboard!');
         return;
       } catch (err) {
         console.warn('Clipboard writeText failed', err);
@@ -970,7 +1033,7 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    showToast('📥 Checklist downloaded!');
+    showToast('Checklist downloaded!');
   }
 
   /* ==========================================================================
@@ -1014,7 +1077,7 @@
             categoryName: cat.name,
             productId: prod.id,
             productName: prod.name,
-            icon: prod.icon || cat.icon || '📋',
+            icon: prod.icon || prod.id || cat.id,
             desc: prod.description || `In ${cat.name}`
           });
         }
@@ -1040,7 +1103,7 @@
         data-category-id="${escapeHtml(res.categoryId)}" 
         data-product-id="${escapeHtml(res.productId)}"
       >
-        <span class="search-result-icon">${res.icon}</span>
+        <span class="search-result-icon">${getIcon(res.icon || res.productId || res.categoryId, 'clipboard')}</span>
         <div class="search-result-info">
           <span class="search-result-title">${escapeHtml(res.productName)}</span>
           <span class="search-result-category">${escapeHtml(res.categoryName)}</span>
@@ -1270,6 +1333,12 @@
      Initialization
      ========================================================================== */
   function init() {
+    // Replace search emoji with SVG
+    const searchIconEl = document.querySelector('.search-icon');
+    if (searchIconEl) {
+      searchIconEl.innerHTML = getIcon('search');
+    }
+
     setupEventDelegation();
     setupSearchListeners();
 
@@ -1293,6 +1362,8 @@
     shareChecklist,
     downloadChecklist,
     launchConfetti,
-    showToast
+    showToast,
+    getIcon,
+    ICONS
   };
 })();

@@ -8,14 +8,14 @@ const APP_DATA = {
     {
       "id": "furniture",
       "name": "Furniture",
-      "icon": "🪑",
+      "icon": "furniture",
       "description": "Sofas, tables, beds & more",
       "color": "#2E7D32",
       "products": [
         {
           "id": "sofa",
           "name": "Sofa / Couch",
-          "icon": "🛋️",
+          "icon": "sofa",
           "description": "Ensure long-lasting frame integrity, seating comfort & premium upholstery",
           "tips": "Always test the sofa by sitting in various positions—upright, lounging, and leaning against armrests. Don't compromise on the internal hardwood frame or foam density, as they dictate whether your couch lasts 10 years or sags in two.",
           "checklist": [
@@ -122,7 +122,7 @@ const APP_DATA = {
         {
           "id": "dining-table",
           "name": "Dining Table",
-          "icon": "🍽️",
+          "icon": "dining-table",
           "description": "Inspect structural alignment, hardwood quality, tabletop durability & joinery",
           "tips": "Dining tables endure daily hot plates, water condensation, and heavy elbows. Always sit down, lean your elbows on the edge to check stability, and look down the tabletop plane from eye level to detect any bowing.",
           "checklist": [
@@ -208,7 +208,7 @@ const APP_DATA = {
         {
           "id": "bed-mattress",
           "name": "Bed / Mattress",
-          "icon": "🛏️",
+          "icon": "bed-mattress",
           "description": "Verify spinal ergonomics, mattress core density, frame structure & storage lift ease",
           "tips": "You spend a third of your life on your mattress. Never buy without lying down in your natural sleeping position for at least 10-15 minutes. Check the slat spacing on the bed frame, as improper slats can ruin even the most expensive mattress.",
           "checklist": [
@@ -294,7 +294,7 @@ const APP_DATA = {
         {
           "id": "wardrobe-closet",
           "name": "Wardrobe / Closet",
-          "icon": "🚪",
+          "icon": "wardrobe",
           "description": "Evaluate carcass sheet durability, premium hardware brands, edge banding & depth",
           "tips": "Wardrobes are long-term built-ins. Always ask for branded, stamped plywood (IS 710 or IS 303) rather than generic commercial ply, and verify that the internal depth is at least 22 inches so your suits hang without diagonal crumpling.",
           "checklist": [
@@ -373,7 +373,7 @@ const APP_DATA = {
         {
           "id": "office-chair",
           "name": "Office Chair",
-          "icon": "💺",
+          "icon": "office-chair",
           "description": "Target ergonomic health with lumbar adjustability, synchro tilt, gas lift & mesh tensile strength",
           "tips": "Never buy an office chair solely based on looks or thick plush cushioning. True ergonomic support comes from spine curvature alignment, adjustable arm heights to relieve neck strain, and a Class 4 gas lift that won't sink during your workday.",
           "checklist": [
@@ -454,14 +454,14 @@ const APP_DATA = {
     {
       "id": "electronics",
       "name": "Electronics",
-      "icon": "📱",
+      "icon": "electronics",
       "description": "Smartphones, laptops, appliances & TVs",
       "color": "#1565C0",
       "products": [
         {
           "id": "smartphone",
           "name": "Smartphone",
-          "icon": "📱",
+          "icon": "smartphone",
           "description": "Check display quality, processor silicon, camera sensors & warranty verification",
           "tips": "Always unbox the device right in front of the retailer or courier delivery agent. Match the 15-digit IMEI on the device screen with the retail box and tax invoice before leaving the store.",
           "checklist": [
@@ -554,7 +554,7 @@ const APP_DATA = {
         {
           "id": "laptop",
           "name": "Laptop",
-          "icon": "💻",
+          "icon": "laptop",
           "description": "Verify CPU generation, RAM speed, NVMe SSD protocol, display color gamut & thermal design",
           "tips": "Always boot up the laptop and run initial hardware diagnostics before parting with payment. Inspect the screen on a pure black background in a dim room to detect backlight bleed or dead pixels.",
           "checklist": [
@@ -647,7 +647,7 @@ const APP_DATA = {
         {
           "id": "television",
           "name": "Television",
-          "icon": "📺",
+          "icon": "television",
           "description": "Evaluate OLED/QLED panel contrast, native 120Hz refresh rate, HDMI 2.1 & Dolby Vision",
           "tips": "Showroom demo mode pumps brightness and saturation to unrealistic levels under harsh retail lighting. Always request the showroom salesperson to set picture mode to 'Cinema' or 'Standard' and feed standard streaming content to evaluate true contrast.",
           "checklist": [
@@ -733,7 +733,7 @@ const APP_DATA = {
         {
           "id": "washing-machine",
           "name": "Washing Machine",
-          "icon": "🧺",
+          "icon": "washing-machine",
           "description": "Compare front-load vs top-load efficiency, direct drive inverter motor & RPM spin speeds",
           "tips": "Front-load washing machines use up to 50% less water and electricity while being gentler on fabrics compared to top-loaders. Crucially, always ensure the installation technician removes the transit shipping bolts before the first test cycle.",
           "checklist": [
@@ -826,7 +826,7 @@ const APP_DATA = {
         {
           "id": "refrigerator",
           "name": "Refrigerator",
-          "icon": "🧊",
+          "icon": "refrigerator",
           "description": "Inspect inverter compressor efficiency, net usable capacity, frost-free cooling & shelf glass",
           "tips": "Always compare 'Net Usable Storage Capacity' rather than 'Gross Volume'—gross numbers include hollow wall insulation space. Place the fridge at least 3-4 inches away from the wall to allow the condenser coils to breathe efficiently.",
           "checklist": [
@@ -907,14 +907,14 @@ const APP_DATA = {
     {
       "id": "automobiles",
       "name": "Automobiles",
-      "icon": "🚗",
+      "icon": "automobiles",
       "description": "Cars, bikes & pre-delivery inspections",
       "color": "#E65100",
       "products": [
         {
           "id": "new-car",
           "name": "New Car",
-          "icon": "🚘",
+          "icon": "new-car",
           "description": "Conduct thorough pre-delivery inspection (PDI), verify pricing transparency & VIN decode",
           "tips": "Never sign the registration documents or pay the final balance until you conduct a rigorous Pre-Delivery Inspection (PDI) in broad daylight at the dealership stockyard. Once registered with the RTO, the car is legally yours, flaws and all.",
           "checklist": [
@@ -1028,7 +1028,7 @@ const APP_DATA = {
         {
           "id": "used-car",
           "name": "Used Car",
-          "icon": "🚙",
+          "icon": "used-car",
           "description": "Detect accidental damage, odometer rollbacks, flood immersion & verify legal title",
           "tips": "Never buy a pre-owned car without hiring an independent third-party mechanic with an OBD-II scanner. Always verify ownership history, hypothecation status, and challans on the central transport database before transferring money.",
           "checklist": [
@@ -1135,7 +1135,7 @@ const APP_DATA = {
         {
           "id": "two-wheeler",
           "name": "Two-Wheeler (Bike/Scooter)",
-          "icon": "🏍️",
+          "icon": "two-wheeler",
           "description": "Inspect motorcycle/scooter chassis, brake lines, 5-year insurance package & PDI checks",
           "tips": "Always insist on taking delivery during daytime hours. Two-wheelers are shipped stacked in carrier trucks and are particularly susceptible to handlebar misalignment, mirror bracket scratches, and disc brake warping.",
           "checklist": [
@@ -1230,14 +1230,14 @@ const APP_DATA = {
     {
       "id": "home-interior",
       "name": "Home & Interior",
-      "icon": "🏠",
+      "icon": "home-interior",
       "description": "Modular kitchen, paints, tiles & decor",
       "color": "#6A1B9A",
       "products": [
         {
           "id": "paint",
           "name": "Paint",
-          "icon": "🎨",
+          "icon": "paint",
           "description": "Evaluate VOC levels, wall putty preparation, sheen levels & coverage per litre",
           "tips": "80% of paint durability depends on thorough wall surface preparation, not the liquid in the bucket. Never let painters apply expensive topcoat emulsion over loose, unprimed putty or damp walls.",
           "checklist": [
@@ -1316,7 +1316,7 @@ const APP_DATA = {
         {
           "id": "tiles-flooring",
           "name": "Tiles & Flooring",
-          "icon": "🧱",
+          "icon": "tiles-flooring",
           "description": "Inspect vitrified tile water absorption, anti-skid ratings, caliber consistency & epoxy grouting",
           "tips": "Always open 3-4 random boxes from the shipment and place tiles edge-to-edge on a flat surface to check for diagonal warpage (banana effect). Make sure all boxes share the exact same 'Batch / Shade Run Number'.",
           "checklist": [
@@ -1395,7 +1395,7 @@ const APP_DATA = {
         {
           "id": "modular-kitchen",
           "name": "Modular Kitchen",
-          "icon": "🍳",
+          "icon": "modular-kitchen",
           "description": "Inspect waterproof sink cabinets, soft-close hardware, 18mm BWP ply & chimney suction",
           "tips": "The kitchen is your home's highest-stress zone, combining boiling water, hot oil, spices, and heavy cookware. Never cut corners on the sink carcass material—insist on 100% waterproof materials and German soft-close hinges.",
           "checklist": [
@@ -1488,7 +1488,7 @@ const APP_DATA = {
         {
           "id": "curtains-blinds",
           "name": "Curtains & Blinds",
-          "icon": "🪟",
+          "icon": "curtains-blinds",
           "description": "Check fabric GSM, blackout opacity, motorized tracks & UV resistance",
           "tips": "Always measure curtain length from the hanging rod/track all the way down to 1 inch above the floor (or floor-puddling length) with a steel measuring tape. Never use a flexible tailor's tape which stretches and causes uneven hems.",
           "checklist": [
@@ -1569,14 +1569,14 @@ const APP_DATA = {
     {
       "id": "jewelry",
       "name": "Jewelry",
-      "icon": "💎",
+      "icon": "jewelry",
       "description": "Gold, diamonds & precious ornaments",
       "color": "#F57F17",
       "products": [
         {
           "id": "gold-jewelry",
           "name": "Gold Jewelry",
-          "icon": "🪙",
+          "icon": "gold-jewelry",
           "description": "Verify BIS HUID hallmarking, net gold weight, stone deductions & buyback terms",
           "tips": "Always insist on a 100% computerized tax invoice with the unique 6-digit alphanumeric BIS Hallmark Unique Identification (HUID) printed on it. Never pay for the weight of embedded stones at the price of gold.",
           "checklist": [
@@ -1655,7 +1655,7 @@ const APP_DATA = {
         {
           "id": "diamond-jewelry",
           "name": "Diamond Jewelry",
-          "icon": "💍",
+          "icon": "diamond-jewelry",
           "description": "Evaluate GIA/IGI certificates, the 4Cs, lab-grown vs natural disclosure & laser inscriptions",
           "tips": "Never purchase a diamond without an independent laboratory certificate from GIA, IGI, or SGL. Match the certificate number laser-engraved on the diamond's girdle using the jeweler's microscope before leaving.",
           "checklist": [
@@ -1736,14 +1736,14 @@ const APP_DATA = {
     {
       "id": "fashion",
       "name": "Fashion",
-      "icon": "👔",
+      "icon": "fashion",
       "description": "Suits, leather goods & bespoke tailoring",
       "color": "#37474F",
       "products": [
         {
           "id": "formal-suit",
           "name": "Formal Suit",
-          "icon": "🤵",
+          "icon": "formal-suit",
           "description": "Inspect natural wool micron counts, full-canvas construction, cupro lining & tailoring fits",
           "tips": "The true mark of a quality suit lies beneath the surface. Squeeze the jacket chest between your thumb and forefinger: if you feel a floating internal layer between the outer wool and inside lining, it is canvas-tailored rather than cheap fused glue.",
           "checklist": [
@@ -1822,7 +1822,7 @@ const APP_DATA = {
         {
           "id": "leather-shoes",
           "name": "Leather Shoes",
-          "icon": "👞",
+          "icon": "leather-shoes",
           "description": "Verify full-grain leather authenticity, Goodyear welt resoling, calfskin lining & arch fit",
           "tips": "Always try on leather dress shoes in the late afternoon when your feet are at their maximum natural expansion. A proper leather shoe should fit snug across the ball of the foot with zero pinch at the toes.",
           "checklist": [
