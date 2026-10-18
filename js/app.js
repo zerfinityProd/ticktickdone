@@ -548,8 +548,13 @@
     void mainContent.offsetWidth;
     mainContent.classList.add('view-enter-active');
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    mainContent.focus();
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    try {
+      mainContent.focus({ preventScroll: true });
+    } catch (error) {
+      mainContent.focus();
+    }
   }
 
   function updateProgressBar(categoryId, productId) {
