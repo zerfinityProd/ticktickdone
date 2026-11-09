@@ -46,6 +46,8 @@
 
   --header-height: 64px;
   --bottom-nav-height: 68px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bottom-total-space: calc(var(--bottom-nav-height) + var(--safe-bottom));
 }
 
 /* 02. BASE RESET & APP FEEL */
@@ -97,13 +99,7 @@ button {
   flex-direction: column;
   min-height: 100vh;
   min-height: 100dvh;
-  padding-bottom: calc(var(--bottom-nav-height) + 20px);
-}
-
-@media (min-width: 900px) {
-  .app-root {
-    padding-bottom: 40px;
-  }
+  position: relative;
 }
 
 /* 04. APP TOP BAR */
@@ -701,7 +697,7 @@ button {
 .checklist-canvas {
   max-width: 800px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 4rem;
+  padding: 1.5rem 1.25rem calc(var(--bottom-total-space) + 2.5rem);
 }
 
 /* Product Hero in Checklist */
@@ -1367,11 +1363,13 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--bottom-nav-height);
-  background: var(--color-surface-translucent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  height: var(--bottom-total-space);
+  padding-bottom: var(--safe-bottom);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.05);
   z-index: 1000;
 }
 
@@ -1584,7 +1582,7 @@ button {
 
 .toast {
   position: fixed;
-  bottom: calc(var(--bottom-nav-height) + 16px);
+  bottom: calc(var(--bottom-total-space) + 16px);
   left: 50%;
   transform: translateX(-50%) translateY(20px);
   background-color: #0f172a;
@@ -1608,13 +1606,14 @@ button {
 /* 18. FOOTER */
 .app-footer {
   text-align: center;
-  padding: 2.5rem 1.25rem 1.5rem;
+  padding: 3.5rem 1.25rem calc(var(--bottom-total-space) + 2.5rem);
   color: var(--color-text-tertiary);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 .footer-tagline {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
   color: var(--color-text-secondary);
 }
 

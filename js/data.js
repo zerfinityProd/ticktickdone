@@ -367,7 +367,7 @@ const APP_DATA = {
               "proTip": "High-quality modular wardrobes offer a 10 to 25-year warranty on BWP plywood against borer/termites and delamination, plus a 5 to 10-year warranty on Blum/Hettich hinges."
             }
           ],
-          "image": "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80"
+          "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "office-chair",
@@ -447,7 +447,7 @@ const APP_DATA = {
               "proTip": "BIFMA X5.1 compliance ensures the chair underwent severe proof load tests: 136 kg drop impact, 300 lb back pull test, and 100,000 caster cycle tests without structural failure."
             }
           ],
-          "image": "https://images.unsplash.com/photo-1580481077195-c990eeaa1228?auto=format&fit=crop&w=800&q=80"
+          "image": "https://images.unsplash.com/photo-1589384267710-7a170981ca78?auto=format&fit=crop&w=800&q=80"
         }
       ],
       "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
@@ -1667,7 +1667,7 @@ const APP_DATA = {
               "proTip": "Reputable showrooms feature an in-house XRF Karatmeter machine. It scans the ornament in 30 seconds and outputs an exact elemental breakdown (e.g. 91.72% Gold, 5.2% Copper, 3.08% Silver)."
             }
           ],
-          "image": "https://images.unsplash.com/photo-1611591475152-473523dd66c6?auto=format&fit=crop&w=800&q=80"
+          "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "diamond-jewelry",

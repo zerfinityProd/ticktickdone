@@ -404,7 +404,7 @@
 
       return `
         <article class="interactive-product-card" data-category-id="${prod.categoryId}" data-product-id="${prod.id}" tabindex="0" role="button">
-          <div class="card-image-hero">
+          <div class="card-image-hero" style="background: linear-gradient(135deg, ${prod.categoryColor}55 0%, #0f172a 100%);">
             <img src="${prod.image}" alt="${escapeHtml(prod.name)}" class="card-img" loading="lazy" onerror="this.style.opacity='0'">
             <div class="card-img-scrim" style="background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%);"></div>
             <span class="card-category-badge" style="background-color: ${prod.categoryColor};">
@@ -542,8 +542,8 @@
       const { checked, total, percentage } = getProgress(category.id, prod.id);
       return `
         <article class="interactive-product-card" data-category-id="${category.id}" data-product-id="${prod.id}" tabindex="0" role="button">
-          <div class="card-image-hero">
-            <img src="${prod.image}" alt="${escapeHtml(prod.name)}" class="card-img" loading="lazy">
+          <div class="card-image-hero" style="background: linear-gradient(135deg, ${category.color}55 0%, #0f172a 100%);">
+            <img src="${prod.image}" alt="${escapeHtml(prod.name)}" class="card-img" loading="lazy" onerror="this.style.opacity='0'">
             <div class="card-img-scrim"></div>
             <span class="card-category-badge" style="background-color: ${category.color};">
               ${escapeHtml(category.name)}
@@ -655,8 +655,8 @@
         <div class="checklist-canvas">
           <!-- Product Hero Card -->
           <div class="checklist-product-hero">
-            <div class="checklist-hero-img-wrap">
-              <img src="${product.image}" alt="${escapeHtml(product.name)}" class="checklist-hero-img">
+            <div class="checklist-hero-img-wrap" style="background: linear-gradient(135deg, ${category.color}55 0%, #0f172a 100%);">
+              <img src="${product.image}" alt="${escapeHtml(product.name)}" class="checklist-hero-img" loading="lazy" onerror="this.style.opacity='0'">
               <div class="checklist-hero-scrim"></div>
               <span class="checklist-cat-pill" style="background-color: ${category.color}">${escapeHtml(category.name)}</span>
             </div>
