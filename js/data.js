@@ -1,8 +1,3 @@
-/**
- * TickTickDone - Comprehensive Product Buying & Pre-Delivery Checklists
- * Data file containing expert-curated verification checklists, priority levels, and pro tips.
- */
-
 const APP_DATA = {
   "categories": [
     {
@@ -10,7 +5,7 @@ const APP_DATA = {
       "name": "Furniture",
       "icon": "furniture",
       "description": "Sofas, tables, beds & more",
-      "color": "#2E7D32",
+      "color": "#10b981",
       "products": [
         {
           "id": "sofa",
@@ -117,7 +112,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Measure entryway diagonal dimensions and elevator doors against sofa dimensions (add 4 inches for packaging). Ensure white-glove assembly is explicitly covered in writing."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "dining-table",
@@ -203,7 +199,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Verify that adjustable threaded nylon glides are pre-installed beneath each table leg to balance uneven floor tiles without needing ugly cardboard shims."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "bed-mattress",
@@ -289,7 +286,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "Insist on a 30 to 100-night trial. Confirm that mattress return pickups are 100% free with no hidden restocking, sanitization, or reverse shipping fees."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "wardrobe-closet",
@@ -368,7 +366,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "High-quality modular wardrobes offer a 10 to 25-year warranty on BWP plywood against borer/termites and delamination, plus a 5 to 10-year warranty on Blum/Hettich hinges."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "office-chair",
@@ -447,16 +446,18 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "BIFMA X5.1 compliance ensures the chair underwent severe proof load tests: 136 kg drop impact, 300 lb back pull test, and 100,000 caster cycle tests without structural failure."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1580481077195-c990eeaa1228?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
     },
     {
       "id": "electronics",
       "name": "Electronics",
       "icon": "electronics",
       "description": "Smartphones, laptops, appliances & TVs",
-      "color": "#1565C0",
+      "color": "#3b82f6",
       "products": [
         {
           "id": "smartphone",
@@ -549,7 +550,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "Confirm whether the retailer handles a 7-day direct unit replacement for manufacturing defects, or if you must take the device to an authorized service center for a DOA certificate first."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "laptop",
@@ -642,7 +644,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Verify whether a lifetime Microsoft Office Home & Student license is bundled and digitally tied to your Microsoft account. Make sure it is activated before signing off delivery."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "television",
@@ -728,7 +731,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Store Mode resets picture settings to hyper-vivid every 30 minutes and runs internal promo loops that consume maximum power and accelerate OLED wear. Ensure 'Home Use' is selected."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "washing-machine",
@@ -821,7 +825,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Front-loaders use motorized pump drainage and require the drain hose to be looped at a height of 65-100 cm off the floor to prevent water from automatically siphoning out during fills."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "refrigerator",
@@ -900,16 +905,18 @@ const APP_DATA = {
               "priority": "low",
               "proTip": "Modern inverter refrigerators operate between 35 dB and 39 dB (whisper quiet). Anything over 42 dB will produce noticeable humming in open-concept kitchens or studio apartments."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80"
     },
     {
       "id": "automobiles",
       "name": "Automobiles",
       "icon": "automobiles",
       "description": "Cars, bikes & pre-delivery inspections",
-      "color": "#E65100",
+      "color": "#f97316",
       "products": [
         {
           "id": "new-car",
@@ -1023,7 +1030,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "A brand-new car should have an odometer reading below 30-50 km (factory testing and transporter loading). An odometer showing 150+ km suggests the car was used for customer joyrides or driven via road."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "used-car",
@@ -1130,7 +1138,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Under Section 157 of the Motor Vehicles Act, the buyer must apply to the insurance company to transfer the policy within 14 days of RC transfer, or all third-party and own-damage claims become void."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "two-wheeler",
@@ -1223,16 +1232,18 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Real-world city mileage is typically 20-25% lower than ARAI/WMTC certified figures due to stop-and-go traffic and payload. Mileage will improve noticeably after the first engine oil change."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
     },
     {
       "id": "home-interior",
       "name": "Home & Interior",
       "icon": "home-interior",
       "description": "Modular kitchen, paints, tiles & decor",
-      "color": "#6A1B9A",
+      "color": "#8b5cf6",
       "products": [
         {
           "id": "paint",
@@ -1311,7 +1322,8 @@ const APP_DATA = {
               "priority": "low",
               "proTip": "Store leftover tinted paint in a tightly sealed glass jar or airtight can away from direct sunlight. Wall nail holes and minor scuffs can be touched up seamlessly within the first 3 years."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "tiles-flooring",
@@ -1390,7 +1402,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "Tile manufacturers classify tiles into Grade 1 (Premium / Standard), Grade 2 (Commercial / Seconds), and Grade 3 (Rejects). Ensure the box label explicitly states 'Grade A' or 'Premium Quality'."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "modular-kitchen",
@@ -1483,7 +1496,8 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "The under-sink cabinet carcass should be made of 100% waterproof PVC foam board (WPC) or lined with a custom-formed SS 304 stainless steel drip tray to catch plumbing leaks."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "curtains-blinds",
@@ -1562,16 +1576,18 @@ const APP_DATA = {
               "priority": "high",
               "proTip": "For motorized roller or zebra blinds, look for tubular motors from reputable brands (Somfy, Tuya, or Dooya) that offer a 5-year replacement warranty on motors and remotes."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
     },
     {
       "id": "jewelry",
       "name": "Jewelry",
       "icon": "jewelry",
       "description": "Gold, diamonds & precious ornaments",
-      "color": "#F57F17",
+      "color": "#eab308",
       "products": [
         {
           "id": "gold-jewelry",
@@ -1650,7 +1666,8 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "Reputable showrooms feature an in-house XRF Karatmeter machine. It scans the ornament in 30 seconds and outputs an exact elemental breakdown (e.g. 91.72% Gold, 5.2% Copper, 3.08% Silver)."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1611591475152-473523dd66c6?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "diamond-jewelry",
@@ -1729,16 +1746,18 @@ const APP_DATA = {
               "priority": "medium",
               "proTip": "High-value diamond jewelry should be insured under an all-risk personal valuables floater. An official retail replacement appraisal certificate allows immediate claims without dispute if lost or stolen."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80"
     },
     {
       "id": "fashion",
       "name": "Fashion",
       "icon": "fashion",
       "description": "Suits, leather goods & bespoke tailoring",
-      "color": "#37474F",
+      "color": "#ec4899",
       "products": [
         {
           "id": "formal-suit",
@@ -1817,7 +1836,8 @@ const APP_DATA = {
               "priority": "low",
               "proTip": "Never dry-clean a wool suit more than 1-2 times a year—harsh chemical solvents strip natural lanolin oils from wool fibers. Use a handheld garment steamer and horsehair clothes brush between wears."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80"
         },
         {
           "id": "leather-shoes",
@@ -1896,19 +1916,19 @@ const APP_DATA = {
               "priority": "low",
               "proTip": "Always insert unfinished aromatic red cedar shoe trees into leather shoes immediately after taking them off. Cedar absorbs moisture and sweat salts while smoothing out walking creases in the vamp."
             }
-          ]
+          ],
+          "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
     }
   ]
 };
 
-// Export for Node.js environments and module bundlers
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = APP_DATA;
 }
 
-// Attach to window object for browser script tag usage
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   window.APP_DATA = APP_DATA;
 }

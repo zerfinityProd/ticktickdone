@@ -1,31 +1,25 @@
 /* ==========================================================================
-   TICK TICK DONE — Light & Vibrant Premium Stylesheet
-   Typography: Plus Jakarta Sans (headings) + Inter (body)
-   Palette: Pure white base, emerald primary, vibrant category accents
-   Version: 3.0.0
+   TICKTICKDONE — Modern Interactive App Stylesheet
+   Vibrant, Tactile, High-Resolution Visual Experience
    ========================================================================== */
 
-/* ==========================================================================
-   01. DESIGN TOKENS
-   ========================================================================== */
+/* 01. DESIGN TOKENS */
 :root {
-  /* Brand — Fresh Emerald */
   --color-primary: #10b981;
   --color-primary-dark: #059669;
   --color-primary-light: #a7f3d0;
   --color-primary-bg: #ecfdf5;
 
-  /* Neutral — Pure white base */
-  --color-bg: #ffffff;
+  --color-bg: #f8fafc;
   --color-surface: #ffffff;
-  --color-surface-raised: #f8fafc;
-  --color-text: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-tertiary: #94a3b8;
+  --color-surface-translucent: rgba(255, 255, 255, 0.85);
   --color-border: #e2e8f0;
   --color-border-light: #f1f5f9;
 
-  /* Vibrant Priority Badges */
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-tertiary: #94a3b8;
+
   --color-high: #ef4444;
   --color-high-bg: #fef2f2;
   --color-medium: #f59e0b;
@@ -33,45 +27,28 @@
   --color-low: #6366f1;
   --color-low-bg: #eef2ff;
 
-  /* Elevation — Softer, light-appropriate shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.03);
-  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.06), 0 4px 10px -4px rgba(0,0,0,0.03);
-  --shadow-xl: 0 20px 40px -8px rgba(0,0,0,0.08);
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Radius — Friendly rounded corners */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
+  --shadow-xl: 0 20px 40px -10px rgba(15, 23, 42, 0.18);
+
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
-  /* Motion */
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration: 200ms;
-  --duration-slow: 350ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Typography */
-  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-
-  /* Layout */
   --header-height: 64px;
-  --container-max: 1200px;
-  --container-padding: 1.5rem;
+  --bottom-nav-height: 68px;
 }
 
-/* ==========================================================================
-   02. THEME
-   ========================================================================== */
-/* Default theme is light mode. Dark mode is intentionally disabled to keep the
-   app visually consistent and easy to read in bright environments. */
-
-/* ==========================================================================
-   03. RESET & BASE TYPOGRAPHY
-   ========================================================================== */
+/* 02. BASE RESET & APP FEEL */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -79,20 +56,28 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 15px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+  overscroll-behavior-y: none;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.65;
-  font-size: 15px;
+  line-height: 1.5;
   min-height: 100vh;
+  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a, button, input, select {
+  touch-action: manipulation;
+  font-family: inherit;
 }
 
 a {
@@ -101,1343 +86,1389 @@ a {
 }
 
 button {
-  font-family: inherit;
-  font-size: inherit;
   cursor: pointer;
   border: none;
   background: none;
 }
 
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-
-/* Custom Scrollbars */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-border);
-  border-radius: var(--radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-text-tertiary);
-}
-
-/* App Shell */
-#app {
+/* 03. APP ROOT LAYOUT */
+.app-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: calc(var(--bottom-nav-height) + 20px);
 }
 
-#main-content {
-  flex: 1 0 auto;
-  outline: none;
+@media (min-width: 900px) {
+  .app-root {
+    padding-bottom: 40px;
+  }
 }
 
-/* ==========================================================================
-   04. APP HEADER & CONTAINER
-   ========================================================================== */
+/* 04. APP TOP BAR */
 .app-header {
   position: sticky;
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background: var(--color-surface);
+  background-color: var(--color-surface-translucent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
-  transition: background-color var(--duration) var(--ease), border-color var(--duration) var(--ease);
 }
 
 .header-container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .header-brand-nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  min-width: 0;
+  gap: 0.85rem;
 }
 
-/* Logo */
-.app-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  user-select: none;
-  transition: opacity var(--duration) var(--ease);
-}
-.app-logo:hover {
-  opacity: 0.85;
-}
-.app-logo .logo-icon {
-  display: none !important;
-}
-
-.logo-mark {
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-full);
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-.app-logo:not(:has(.logo-mark))::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-full);
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-.logo-text {
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-/* Breadcrumb Navigation */
-.breadcrumb {
+.app-brand-link {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
-  color: var(--color-text-tertiary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.breadcrumb-item {
-  display: inline-flex;
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.app-badge-pill {
+  display: none;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
-.breadcrumb-link {
-  color: var(--color-text-secondary);
-  transition: color var(--duration) var(--ease);
-}
-.breadcrumb-link:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-}
-
-.breadcrumb-current {
-  color: var(--color-text);
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDot 2s infinite;
 }
 
-.breadcrumb-separator {
-  color: var(--color-text-tertiary);
-  font-size: 0.75rem;
-  user-select: none;
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-/* ==========================================================================
-   05. SEARCH CONTAINER & AUTOCOMPLETE
-   ========================================================================== */
+/* SEARCH BAR */
 .search-container {
   position: relative;
-  flex-shrink: 0;
+  flex: 0 1 340px;
 }
 
 .search-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
+  background-color: #f1f5f9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.85rem;
+  transition: all 0.2s var(--ease);
+}
+
+.search-input-wrapper:focus-within {
+  background-color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
 .search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  color: var(--color-text-tertiary);
-  pointer-events: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 2;
-  font-size: 13px;
-  line-height: 1;
-}
-
-.search-icon svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 1.75;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  color: var(--color-text-tertiary);
+  margin-right: 0.5rem;
 }
 
 .search-input {
-  width: 260px;
-  height: 38px;
-  padding: 0 1rem 0 36px;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  color: var(--color-text);
-  font-size: 0.85rem;
+  width: 100%;
+  border: none;
+  background: transparent;
   outline: none;
-  transition: border-color var(--duration) var(--ease),
-              box-shadow var(--duration) var(--ease),
-              background-color var(--duration) var(--ease),
-              width var(--duration) var(--ease);
+  font-size: 0.88rem;
+  color: var(--color-text);
 }
 
 .search-input::placeholder {
   color: var(--color-text-tertiary);
 }
 
-.search-input:focus {
-  width: 300px;
-  border-color: var(--color-primary);
-  background-color: var(--color-surface);
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
-  outline: none;
+.search-kbd {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  font-weight: 600;
 }
 
-/* Autocomplete Dropdown */
 .search-results {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  width: 360px;
-  max-height: 400px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  width: 100%;
+  min-width: 300px;
+  max-height: 420px;
   overflow-y: auto;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
   z-index: 200;
-  animation: fadeIn var(--duration) var(--ease);
+  padding: 0.5rem;
 }
 
-.search-results[hidden] {
-  display: none !important;
-}
-
-.search-result-item {
+.search-result-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  border-bottom: 1px solid var(--color-border-light);
-  background-color: var(--color-surface);
-  transition: background-color var(--duration) var(--ease);
+  transition: background-color 0.15s ease;
 }
-.search-result-item:last-child {
-  border-bottom: none;
-}
-.search-result-item:hover,
-.search-result-item:focus {
-  background-color: var(--color-bg);
-  outline: none;
+
+.search-result-row:hover {
+  background-color: #f8fafc;
 }
 
 .search-result-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
+  font-size: 1.25rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-bg);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-secondary);
-  font-size: 1rem;
-  line-height: 1;
 }
 
-.search-result-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--color-text-secondary);
-  stroke-width: 1.75;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.search-result-info {
+.search-result-text {
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  flex: 1;
 }
 
 .search-result-title {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.search-result-cat {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.search-empty-item {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+}
+
+/* 05. APP HERO BANNER */
+.app-hero-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #064e3b 100%);
+  color: #ffffff;
+  padding: 2.75rem 1.25rem 2.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-top-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a7f3d0;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtext {
+  font-size: 1.02rem;
+  color: #cbd5e1;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.55;
+}
+
+.hero-stats-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+}
+
+.stat-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: #34d399;
+  font-size: 0.98rem;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: #e2e8f0;
+}
+
+/* 06. MAIN APP CANVAS */
+.app-body-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem;
+}
+
+.category-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.section-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+/* 07. INTERACTIVE CATEGORY SCROLL PILLS */
+.category-pills-scroll {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.25rem 0 1.25rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-pills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+  padding: 0.55rem 1.1rem;
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all 0.2s var(--ease-spring);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-pill:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+.category-pill:active {
+  transform: scale(0.96);
+}
+
+.category-pill.active {
+  background-color: var(--color-text);
+  color: #ffffff;
+  border-color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.pill-icon {
+  display: flex;
+  font-size: 1rem;
+  color: var(--cat-color, currentColor);
+}
+
+/* 08. INTERACTIVE PRODUCT GRID & CARDS */
+.interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.35rem;
+  margin-bottom: 2.5rem;
+}
+
+.interactive-product-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s var(--ease-spring), box-shadow 0.22s var(--ease), border-color 0.22s ease;
+  user-select: none;
+}
+
+.interactive-product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary-light);
+}
+
+.interactive-product-card:active {
+  transform: scale(0.97);
+}
+
+.card-image-hero {
+  position: relative;
+  height: 180px;
+  background-color: #0f172a;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+
+.interactive-product-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+.card-img-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.15) 0%, rgba(15,23,42,0.85) 100%);
+}
+
+.card-category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.card-status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.card-status-badge.complete {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.card-status-badge.in-progress {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.card-description {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta-row {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.card-checks-count {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.card-action-hint {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.card-progress-wrap {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.card-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.card-progress-track {
+  height: 6px;
+  background-color: #f1f5f9;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.card-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* 09. APP PROMO CARD */
+.app-promo-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+  border: 1.5px dashed #86efac;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.promo-icon {
+  font-size: 2.25rem;
+}
+
+.promo-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.promo-text h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 0.25rem;
+}
+
+.promo-text p {
+  font-size: 0.88rem;
+  color: #166534;
+  line-height: 1.5;
+}
+
+/* 10. CHECKLIST INSPECTION APP VIEW */
+.checklist-app-view {
+  min-height: 100vh;
+}
+
+.checklist-subbar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 90;
+  background: var(--color-surface-translucent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.subbar-back-btn {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+
+.subbar-back-btn:hover {
+  background-color: #f1f5f9;
+  color: var(--color-text);
+}
+
+.subbar-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
   color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.35;
 }
 
-.search-result-category {
-  font-size: 0.75rem;
-  color: var(--color-text-tertiary);
-  margin-top: 0.15rem;
-}
-
-/* ==========================================================================
-   06. HERO SECTION
-   ========================================================================== */
-.hero {
-  background-color: var(--color-primary-bg);
-  padding: 4rem 1.5rem;
-  border-bottom: 1px solid var(--color-border-light);
-  text-align: center;
-}
-
-.hero-inner {
-  max-width: 680px;
+.checklist-canvas {
+  max-width: 800px;
   margin: 0 auto;
-  text-align: center;
+  padding: 1.5rem 1.25rem 4rem;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
-  background-color: var(--color-surface);
+/* Product Hero in Checklist */
+.checklist-product-hero {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
   margin-bottom: 1.25rem;
-  box-shadow: var(--shadow-xs);
-  user-select: none;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--color-text);
-  margin-bottom: 1rem;
-}
-
-.hero h1 .highlight {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--color-primary-light);
-  text-underline-offset: 4px;
-}
-
-.hero p {
-  font-size: 1.05rem;
-  color: var(--color-text-secondary);
-  line-height: 1.65;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-/* ==========================================================================
-   07. CONTAINER & SECTION HEADERS
-   ========================================================================== */
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 2.5rem var(--container-padding);
-  width: 100%;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.75rem;
-  gap: 1rem;
-}
-
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  line-height: 1.25;
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-top: 0.25rem;
-  line-height: 1.5;
-}
-
-/* ==========================================================================
-   08. CATEGORIES GRID & CATEGORY CARDS
-   ========================================================================== */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.category-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
+.checklist-hero-img-wrap {
   position: relative;
-  text-align: left;
-  user-select: none;
-  transition: all var(--duration) var(--ease);
+  height: 200px;
+  background: #0f172a;
 }
 
-.category-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .category-card:hover {
-    border-color: #3f3f46 !important;
-  }
-}
-
-.category-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-/* Card Icon Box (Inline SVGs) */
-.card-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  flex-shrink: 0;
-  background-color: var(--color-primary-bg);
-  color: var(--color-primary);
-  font-size: 1.25rem;
-  line-height: 1;
-  transition: transform var(--duration) var(--ease);
-}
-
-.category-card:hover .card-icon,
-.product-card:hover .card-icon {
-  transform: scale(1.05);
-}
-
-.card-icon svg {
-  width: 22px;
-  height: 22px;
-  stroke-width: 1.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-}
-
-.card-badge {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--color-text-tertiary);
-  background-color: var(--color-bg);
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border-light);
-  line-height: 1.3;
-}
-
-.category-card-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 0.35rem;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-}
-
-.category-card-desc {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  flex: 1;
-}
-
-.card-footer {
-  margin-top: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--color-primary);
-}
-
-.card-footer .arrow {
-  display: inline-block;
-  transition: transform var(--duration) var(--ease);
-}
-
-.category-card:hover .card-footer .arrow,
-.product-card:hover .card-footer .arrow {
-  transform: translateX(4px);
-}
-
-/* ==========================================================================
-   09. PRODUCTS GRID & PRODUCT CARDS
-   ========================================================================== */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
-.product-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  text-align: left;
-  user-select: none;
-  transition: all var(--duration) var(--ease);
-}
-
-.product-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .product-card:hover {
-    border-color: #3f3f46 !important;
-  }
-}
-
-.product-card-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 0.35rem;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-}
-
-.product-card-desc {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  flex: 1;
-}
-
-/* ==========================================================================
-   10. BACK NAVIGATION BUTTON
-   ========================================================================== */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  padding: 0.4rem 0.75rem;
-  border-radius: var(--radius-sm);
-  background-color: transparent;
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color var(--duration) var(--ease),
-              color var(--duration) var(--ease),
-              border-color var(--duration) var(--ease);
-}
-
-.back-btn:hover {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border-color: var(--color-border-light);
-}
-
-.back-btn svg {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-}
-
-/* ==========================================================================
-   11. CHECKLIST CONTAINER & PRODUCT HEADER
-   ========================================================================== */
-.checklist-container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem var(--container-padding) 4rem;
+.checklist-hero-img {
   width: 100%;
-}
-
-.checklist-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-header {
-  margin-bottom: 1.5rem;
-}
-
-.product-header-top {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.product-header-icon {
-  width: 48px;
-  height: 48px;
-  background-color: var(--color-primary-bg);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.product-header-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke: var(--color-primary);
-  stroke-width: 1.75;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.product-header-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-category-tag {
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-primary);
-  margin-bottom: 0.15rem;
-}
-
-.product-header-info h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
-  line-height: 1.25;
-  margin: 0;
-}
-
-.product-header-desc {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-}
-
-/* ==========================================================================
-   12. GENERAL INSPECTION TIPS ACCORDION
-   ========================================================================== */
-.general-tips {
-  margin-top: 1rem;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background-color: var(--color-surface);
-}
-
-.tips-toggle {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: var(--color-bg);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  border: none;
-  text-align: left;
-  transition: background-color var(--duration) var(--ease),
-              color var(--duration) var(--ease);
-}
-
-.tips-toggle:hover {
-  background-color: var(--color-border-light);
-  color: var(--color-text);
-}
-
-.tips-toggle .chevron {
-  transition: transform var(--duration-slow) var(--ease);
-  font-size: 0.7rem;
-  display: inline-block;
-}
-
-.tips-toggle.expanded .chevron {
-  transform: rotate(180deg);
-}
-
-.tips-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--duration-slow) var(--ease),
-              opacity var(--duration-slow) var(--ease);
-  opacity: 0;
-}
-
-.tips-content.expanded {
-  max-height: 500px;
-  opacity: 1;
-}
-
-.tips-list {
-  padding: 0.75rem 1rem 0.75rem 2.25rem;
-  margin: 0;
-  list-style: none;
-}
-
-.tips-list li {
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  line-height: 1.55;
-  position: relative;
-}
-
-.tips-list li:last-child {
-  margin-bottom: 0;
-}
-
-.tips-list li::before {
-  content: '•';
-  position: absolute;
-  left: -1.25rem;
-  color: var(--color-primary);
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-
-/* ==========================================================================
-   13. STICKY PROGRESS BAR TRACKER
-   ========================================================================== */
-.progress-container {
-  position: sticky;
-  top: var(--header-height);
-  z-index: 50;
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border-light);
-  padding: 1rem 0;
-  margin-bottom: 1.5rem;
-  transition: background-color var(--duration) var(--ease),
-              border-color var(--duration) var(--ease);
-}
-
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.progress-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-text);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.progress-text {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
-  font-weight: 500;
-}
-
-.progress-track {
-  height: 6px;
-  background-color: var(--color-border-light);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar {
   height: 100%;
-  background-color: var(--color-primary);
+  object-fit: cover;
+}
+
+.checklist-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.8) 100%);
+}
+
+.checklist-cat-pill {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
-  transition: width var(--duration-slow) var(--ease);
-  min-width: 0;
-  width: 0%;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-/* ==========================================================================
-   14. CHECKLIST ITEM ROW & CARD
-   ========================================================================== */
-.checklist-item {
-  display: flex;
-  gap: 0.875rem;
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  transition: all var(--duration) var(--ease);
-  align-items: flex-start;
-  position: relative;
+.checklist-hero-details {
+  padding: 1.25rem;
 }
 
-.checklist-item:hover {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-xs);
+.checklist-hero-details h1 {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
 }
 
-.checklist-item.checked {
-  background-color: var(--color-primary-bg);
-  border-color: rgba(22, 163, 74, 0.2);
-}
-
-.checklist-item.checked .item-title {
+.checklist-hero-details p {
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  text-decoration: line-through;
-  text-decoration-color: var(--color-text-tertiary);
+  line-height: 1.5;
 }
 
-/* ==========================================================================
-   15. CUSTOM SVG CHECKBOX COMPONENT
-   ========================================================================== */
-.checklist-checkbox {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-  margin-top: 2px;
-  border: 2px solid var(--color-border);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all var(--duration) var(--ease);
-  position: relative;
-  display: grid;
-  place-content: center;
-  background-color: var(--color-surface);
-  flex-shrink: 0;
+/* Sticky Interactive Progress Card */
+.interactive-progress-card {
+  position: sticky;
+  top: calc(var(--header-height) + 48px);
+  z-index: 85;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.25rem;
 }
 
-.checklist-checkbox::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background-color: transparent;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  transform: scale(0);
-  transition: transform 150ms var(--ease),
-              background-color 150ms var(--ease);
-}
-
-.checklist-checkbox::after {
-  content: none !important;
-}
-
-.checklist-checkbox:checked {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.checklist-checkbox:checked::before {
-  background-color: #ffffff;
-  transform: scale(1);
-}
-
-.checklist-checkbox:not(:checked)::before {
-  transform: scale(0);
-}
-
-.checklist-checkbox:hover:not(:checked) {
-  border-color: var(--color-primary-dark);
-}
-
-.checklist-checkbox:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* ==========================================================================
-   16. CHECKLIST ITEM CONTENT & PRIORITY BADGES
-   ========================================================================== */
-.item-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.item-header {
+.progress-info-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.25rem;
-  flex-wrap: wrap;
-}
-
-.item-title {
-  font-size: 0.9rem;
-  font-weight: 550;
-  color: var(--color-text);
-  cursor: pointer;
-  line-height: 1.4;
-  transition: color var(--duration) var(--ease);
-}
-
-.item-description {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  line-height: 1.55;
-}
-
-/* Priority Badges */
-.priority-badge {
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-  flex-shrink: 0;
-  white-space: nowrap;
-  display: inline-flex;
   align-items: center;
-  line-height: 1.2;
+  margin-bottom: 0.65rem;
 }
 
-.priority-high {
-  color: var(--color-high);
-  background-color: var(--color-high-bg);
-  border: 1px solid rgba(220, 38, 38, 0.15);
+.progress-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
 }
 
-.priority-medium {
-  color: var(--color-medium);
-  background-color: var(--color-medium-bg);
-  border: 1px solid rgba(217, 119, 6, 0.15);
-}
-
-.priority-low {
-  color: var(--color-low);
-  background-color: var(--color-low-bg);
-  border: 1px solid rgba(37, 99, 235, 0.15);
-}
-
-/* ==========================================================================
-   17. PRO TIP COLLAPSIBLE ACCORDION
-   ========================================================================== */
-.pro-tip-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--color-primary);
-  cursor: pointer;
-  background: none;
-  padding: 0.25rem 0;
-  border: none;
-  transition: color var(--duration) var(--ease);
-}
-
-.pro-tip-toggle:hover {
-  text-decoration: underline;
+.progress-big-number {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--color-primary-dark);
 }
 
-.pro-tip {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  margin-top: 0;
-  padding: 0 0.75rem;
-  font-size: 0.82rem;
+.progress-total-label {
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
-  line-height: 1.55;
-  font-style: italic;
-  border-left: 3px solid var(--color-primary);
-  border-radius: var(--radius-sm);
-  transition: max-height var(--duration-slow) var(--ease),
-              opacity var(--duration-slow) var(--ease),
-              margin-top var(--duration-slow) var(--ease),
-              padding var(--duration-slow) var(--ease);
+  font-weight: 500;
 }
 
-.pro-tip.expanded {
-  max-height: 200px;
-  opacity: 1;
-  margin-top: 0.5rem;
-  padding: 0.75rem;
-  background-color: var(--color-primary-bg);
+.progress-status-pill {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
-/* ==========================================================================
-   18. ACTIONS BAR TOOLBAR
-   ========================================================================== */
-.actions-bar {
+.progress-status-pill.in-progress {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.progress-status-pill.certified {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.progress-bar-container {
+  height: 8px;
+  background-color: #f1f5f9;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #06b6d4 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.35s var(--ease-spring);
+}
+
+/* Checklist Filter Bar */
+.checklist-filter-bar {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border-light);
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.85rem;
+  scrollbar-width: none;
 }
 
-/* ==========================================================================
-   19. BUTTON SYSTEM (.btn, .btn-primary, .btn-secondary)
-   ========================================================================== */
+.checklist-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.check-filter-pill {
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.check-filter-pill:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.check-filter-pill.active {
+  background: var(--color-text);
+  color: #ffffff;
+  border-color: var(--color-text);
+}
+
+/* Checklist Items Stack */
+.checklist-items-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.checklist-row {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.checklist-row:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
+}
+
+.checklist-row.is-checked {
+  background-color: #f0fdf4;
+  border-color: #86efac;
+}
+
+.checklist-row.is-checked .checklist-item-title {
+  text-decoration: line-through;
+  color: #475569;
+}
+
+/* Custom Tactile Checkbox */
+.checklist-check-btn {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 8px;
+  border: 2px solid #cbd5e1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: all 0.2s var(--ease-spring);
+  color: #ffffff;
+}
+
+.checklist-check-btn:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.08);
+}
+
+.checklist-check-btn:active {
+  transform: scale(0.92);
+}
+
+.checklist-check-btn.checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  animation: checkBounce 0.3s var(--ease-spring);
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0.85); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.check-box-icon {
+  display: flex;
+  font-size: 1rem;
+}
+
+.checklist-row-content {
+  flex: 1;
+}
+
+.checklist-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.checklist-item-title {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.35;
+}
+
+.priority-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.badge-high {
+  background-color: var(--color-high-bg);
+  color: var(--color-high);
+}
+
+.badge-medium {
+  background-color: var(--color-medium-bg);
+  color: var(--color-medium);
+}
+
+.badge-low {
+  background-color: var(--color-low-bg);
+  color: var(--color-low);
+}
+
+.checklist-item-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+.checklist-protip-box {
+  background-color: #f8fafc;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 4px var(--radius-sm) var(--radius-sm) 4px;
+  padding: 0.65rem 0.85rem;
+}
+
+.protip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.protip-text {
+  font-size: 0.82rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+/* Actions Dock */
+.checklist-actions-dock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* 11. BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.25rem;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem;
   border-radius: var(--radius-md);
-  font-size: 0.85rem;
-  font-weight: 550;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.2s var(--ease-spring);
   cursor: pointer;
-  transition: all var(--duration) var(--ease);
-  border: 1px solid transparent;
   user-select: none;
-  text-decoration: none;
-  font-family: inherit;
-  line-height: 1.4;
-  white-space: nowrap;
 }
 
 .btn:active {
-  transform: scale(0.98);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  transform: scale(0.96);
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
-  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background-color: var(--color-bg);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-text-tertiary);
-  color: var(--color-text);
-  box-shadow: var(--shadow-xs);
+  background: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
-.btn-icon {
-  padding: 0.5rem;
-  border-radius: var(--radius-sm);
-  aspect-ratio: 1 / 1;
-}
-
-/* ==========================================================================
-   20. COMPLETION CELEBRATION MODAL
-   ========================================================================== */
-.celebration {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  animation: fadeIn var(--duration-slow) var(--ease);
-}
-
-.celebration-content {
-  background-color: var(--color-surface);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--color-border);
-  animation: popIn 0.35s var(--ease);
-}
-
-.celebration-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: inline-block;
-  line-height: 1;
-}
-
-.celebration-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
-}
-
-.celebration-subtitle {
-  font-size: 0.9rem;
+.btn-ghost {
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
 }
 
-.celebration-subtitle strong {
-  color: var(--color-text);
-  font-weight: 600;
+.btn-ghost:hover {
+  color: var(--color-high);
+  background-color: var(--color-high-bg);
 }
 
-.celebration-actions {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  flex-wrap: wrap;
+.btn-sm {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
 }
 
-/* ==========================================================================
-   21. CONFETTI PARTICLE SYSTEM
-   ========================================================================== */
-#confetti-container {
-  position: fixed;
+/* 12. CATEGORIES GALLERY */
+.categories-vibrant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-hero-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 240px;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
+}
+
+.category-hero-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.cat-card-img-wrap {
+  position: absolute;
   inset: 0;
-  z-index: 999;
-  pointer-events: none;
+}
+
+.cat-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cat-img-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cat-card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.cat-icon-large {
+  font-size: 2.25rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.cat-name {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.cat-desc {
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.confetti-piece {
-  position: absolute;
-  z-index: 1001;
-  pointer-events: none;
-  animation: confetti-fall linear forwards;
-}
-
-@keyframes confetti-fall {
-  from {
-    top: -10px;
-    opacity: 1;
-    transform: rotateZ(0deg);
-  }
-  to {
-    top: 100vh;
-    opacity: 0;
-    transform: rotateZ(720deg);
-  }
-}
-
-/* ==========================================================================
-   22. TOAST NOTIFICATIONS (.toast)
-   ========================================================================== */
-.toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  opacity: 0;
-  background-color: var(--color-text);
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  font-weight: 500;
-  z-index: 2000;
-  pointer-events: none;
-  box-shadow: var(--shadow-lg);
-  transition: transform var(--duration-slow) var(--ease),
-              opacity var(--duration-slow) var(--ease);
-  display: inline-flex;
+.cat-footer-row {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
-  .toast {
-    background-color: #27272a;
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-  }
+.cat-badge-pill {
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
-.toast.show {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+.cat-explore-link {
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-/* ==========================================================================
-   23. EMPTY STATE SCREENS (.empty-state)
-   ========================================================================== */
-.empty-state {
+/* 13. ACTIVE CHECKS VIEW */
+.active-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.active-check-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.active-check-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.active-card-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.active-card-info {
+  flex: 1;
+}
+
+.active-cat-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.active-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.active-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.active-track {
+  flex: 1;
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.active-fill {
+  height: 100%;
+}
+
+.active-pct {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.empty-active-card {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3.5rem 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed var(--color-border);
 }
 
-.empty-state-icon {
-  font-size: 2.5rem;
+.empty-icon {
+  font-size: 3rem;
+  display: block;
   margin-bottom: 1rem;
-  opacity: 0.4;
+}
+
+/* 14. BILL SHIELD VIEW */
+.bill-shield-hero {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+
+.shield-badge-large {
+  display: inline-flex;
+  padding: 0.4rem 0.95rem;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.rule-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.rule-num {
+  width: 32px;
+  height: 32px;
+  background: var(--color-text);
+  color: #ffffff;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-tertiary);
-}
-
-.empty-state-icon svg {
-  width: 48px;
-  height: 48px;
-  stroke: var(--color-text-tertiary);
-  fill: none;
-  stroke-width: 1.5;
-}
-
-.empty-state-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--color-text);
-  letter-spacing: -0.01em;
-}
-
-.empty-state-text {
+  font-weight: 800;
   font-size: 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.rule-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+}
+
+.rule-card p {
+  font-size: 0.88rem;
   color: var(--color-text-secondary);
-  max-width: 420px;
-  margin: 0 auto;
   line-height: 1.55;
 }
 
-/* ==========================================================================
-   24. APP FOOTER
-   ========================================================================== */
-.app-footer {
-  padding: 2rem var(--container-padding);
-  border-top: 1px solid var(--color-border-light);
-  text-align: center;
-  background-color: var(--color-surface);
-  margin-top: auto;
+.bill-generator-tool {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
 }
 
-.footer-container {
-  max-width: var(--container-max);
+.bill-generator-tool h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.bill-generator-tool p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.generator-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.app-select {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #ffffff;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+/* 15. BOTTOM APP NAVIGATION BAR (Native Mobile Dock) */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--bottom-nav-height);
+  background: var(--color-surface-translucent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--color-border);
+  z-index: 1000;
+}
+
+.bottom-nav-inner {
+  max-width: 600px;
+  height: 100%;
   margin: 0 auto;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 0.5rem;
+}
+
+.nav-tab {
+  display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-}
-
-.footer-tagline {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-}
-
-.footer-copyright {
-  font-size: 0.72rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
   color: var(--color-text-tertiary);
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
-/* ==========================================================================
-   25. VIEW TRANSITIONS & KEYFRAME ANIMATIONS
-   ========================================================================== */
-.view-enter {
-  opacity: 0;
-  transform: translateY(12px);
+.nav-tab.active {
+  color: var(--color-primary-dark);
 }
 
-.view-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity var(--duration-slow) var(--ease),
-              transform var(--duration-slow) var(--ease);
+.tab-icon {
+  display: flex;
+  font-size: 1.35rem;
+  margin-bottom: 2px;
+}
+
+.tab-icon-badge-wrap {
+  position: relative;
+}
+
+.tab-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.tab-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* 16. MODAL & BOTTOM SHEET */
+.app-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.app-modal[hidden] {
+  display: none;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 580px;
+  max-height: 85vh;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.25s var(--ease-spring);
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -1445,623 +1476,167 @@ html {
   to { opacity: 1; }
 }
 
-@keyframes popIn {
-  0% { opacity: 0; transform: scale(0.92); }
-  100% { opacity: 1; transform: scale(1); }
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* ==========================================================================
-   26. ACCESSIBILITY, FOCUS STATES & REDUCED MOTION
-   ========================================================================== */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.category-card:focus-visible,
-.product-card:focus-visible,
-.search-result-item:focus-visible,
-.btn:focus-visible,
-.tips-toggle:focus-visible,
-.pro-tip-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.modal-title-wrap {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.modal-icon-badge {
+  font-size: 1.75rem;
 }
 
-/* ==========================================================================
-   27. RESPONSIVE DESIGN: LARGE TABLET / SMALL LAPTOP (<= 1024px)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  :root {
-    --container-padding: 1.25rem;
-  }
-
-  .categories-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  }
-
-  .search-input {
-    width: 220px;
-  }
-
-  .hero {
-    padding: 3.5rem 1.25rem;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text);
 }
 
-/* ==========================================================================
-   28. RESPONSIVE DESIGN: TABLET / iPAD (<= 768px)
-   ========================================================================== */
-@media (max-width: 768px) {
-  :root {
-    --header-height: auto;
-    --container-padding: 1rem;
-  }
+.modal-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
 
-  /* -- Header -- */
-  .app-header {
-    height: auto;
-    padding: 0.75rem 0;
-  }
+.modal-close-btn {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-text-tertiary);
+  padding: 0.25rem;
+}
 
-  .header-container {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-    padding: 0 1rem;
-  }
+.modal-close-btn:hover {
+  color: var(--color-text);
+}
 
-  .header-brand-nav {
-    justify-content: space-between;
-    width: 100%;
-  }
+.modal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
 
-  .breadcrumb {
+.bill-clauses-banner {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.bill-clauses-code {
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #334155;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: #f8fafc;
+}
+
+/* 17. CONFETTI & TOAST */
+#confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fallDown linear forwards;
+}
+
+@keyframes fallDown {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+.toast {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s var(--ease-spring);
+  z-index: 4000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 18. FOOTER */
+.app-footer {
+  text-align: center;
+  padding: 2.5rem 1.25rem 1.5rem;
+  color: var(--color-text-tertiary);
+  font-size: 0.82rem;
+}
+
+.footer-tagline {
+  margin-bottom: 0.25rem;
+  color: var(--color-text-secondary);
+}
+
+/* 19. RESPONSIVE BREAKPOINTS */
+@media (max-width: 640px) {
+  .search-kbd {
     display: none;
   }
 
-  .search-container {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .search-input {
-    width: 100%;
-  }
-
-  .search-input:focus {
-    width: 100%;
-  }
-
-  .search-results {
-    width: 100%;
-    left: 0;
-    right: 0;
-    max-height: 60vh;
-  }
-
-  /* -- Hero -- */
-  .hero {
-    padding: 3rem 1rem;
-  }
-
-  .hero h1 {
-    font-size: 1.75rem;
-  }
-
-  .hero p {
-    font-size: 0.95rem;
-  }
-
-  .hero-badge {
-    font-size: 0.72rem;
-  }
-
-  /* -- Content -- */
-  .container {
-    padding: 1.75rem 1rem;
-  }
-
-  .section-header {
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .categories-grid,
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 0.75rem;
-  }
-
-  /* -- Checklist -- */
-  .checklist-container {
-    padding: 1.5rem 1rem 3rem;
-  }
-
-  .progress-container {
-    top: 0;
-  }
-
-  .product-header-top {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .product-header-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  /* -- Action Buttons -- */
-  .actions-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .actions-bar .btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 48px;
-  }
-
-  /* -- Touch-friendly targets -- */
-  .category-card,
-  .product-card {
-    padding: 1.25rem;
-  }
-
-  .checklist-item {
-    padding: 1rem;
-    gap: 0.75rem;
-  }
-
-  .checklist-checkbox {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-  }
-
-  .back-btn {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  /* -- Celebration -- */
-  .celebration-content {
-    width: 92%;
-    max-width: 380px;
-    padding: 2rem 1.5rem;
-  }
-}
-
-/* ==========================================================================
-   29. RESPONSIVE DESIGN: LARGE PHONE (<= 480px)
-   ========================================================================== */
-@media (max-width: 480px) {
-  /* -- Hero -- */
-  .hero {
-    padding: 2.5rem 1rem;
-  }
-
-  .hero h1 {
-    font-size: 1.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hero p {
-    font-size: 0.88rem;
-  }
-
-  .hero-badge {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.7rem;
-  }
-
-  /* -- Layout -- */
-  .container {
-    padding: 1.25rem 0.875rem;
-  }
-
-  .section-title {
-    font-size: 1.2rem;
-  }
-
-  .section-subtitle {
-    font-size: 0.82rem;
-  }
-
-  /* -- Cards go full single column -- */
-  .categories-grid,
-  .products-grid {
+  .interactive-grid {
     grid-template-columns: 1fr;
-    gap: 0.625rem;
   }
 
-  .category-card,
-  .product-card {
-    padding: 1rem;
+  .card-image-hero {
+    height: 160px;
   }
 
-  .card-icon {
-    width: 36px;
-    height: 36px;
+  .checklist-subbar {
+    padding: 0.5rem 1rem;
   }
 
-  .card-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .category-card-title,
-  .product-card-title {
-    font-size: 0.95rem;
-  }
-
-  .category-card-desc,
-  .product-card-desc {
-    font-size: 0.8rem;
-  }
-
-  /* -- Checklist -- */
-  .checklist-container {
-    padding: 1rem 0.875rem 3rem;
-  }
-
-  .checklist-item {
-    padding: 0.85rem;
-    gap: 0.625rem;
-  }
-
-  .item-title {
-    font-size: 0.85rem;
-  }
-
-  .item-description {
-    font-size: 0.78rem;
-  }
-
-  .priority-badge {
-    font-size: 0.6rem;
-    padding: 0.1rem 0.4rem;
-  }
-
-  .pro-tip-toggle {
-    font-size: 0.74rem;
-  }
-
-  .pro-tip.expanded {
-    font-size: 0.78rem;
-    padding: 0.6rem;
-  }
-
-  /* -- Progress -- */
-  .progress-header {
+  .generator-controls {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  .progress-title,
-  .progress-text {
-    font-size: 0.72rem;
-  }
-
-  /* -- Product Header -- */
-  .product-header-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .product-header-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .product-header-info h1 {
-    font-size: 1.25rem;
-  }
-
-  .product-category-tag {
-    font-size: 0.65rem;
-  }
-
-  /* -- Celebration -- */
-  .celebration-content {
-    padding: 1.75rem 1.25rem;
-    width: 94%;
-  }
-
-  .celebration-icon {
-    font-size: 2.5rem;
-  }
-
-  .celebration-title {
-    font-size: 1.25rem;
-  }
-
-  .celebration-subtitle {
-    font-size: 0.82rem;
-  }
-
-  .celebration-actions {
-    flex-direction: column;
-  }
-
-  .celebration-actions .btn {
-    width: 100%;
-  }
-
-  /* -- Footer -- */
-  .app-footer {
-    padding: 1.5rem 0.875rem;
-  }
-
-  .footer-tagline {
-    font-size: 0.78rem;
-  }
-
-  .footer-copyright {
-    font-size: 0.68rem;
-  }
-}
-
-/* ==========================================================================
-   30. RESPONSIVE DESIGN: SMALL PHONE (<= 360px)
-   ========================================================================== */
-@media (max-width: 360px) {
-  .hero h1 {
-    font-size: 1.35rem;
-  }
-
-  .hero p {
-    font-size: 0.82rem;
-  }
-
-  .logo-text {
-    font-size: 1rem;
-  }
-
-  .category-card,
-  .product-card {
-    padding: 0.875rem;
-  }
-
-  .card-icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .card-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .checklist-item {
-    padding: 0.75rem;
-    gap: 0.5rem;
-  }
-
-  .checklist-checkbox {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-  }
-
-  .actions-bar .btn {
-    font-size: 0.8rem;
-    padding: 0.55rem 1rem;
-  }
-
-  .product-header-top {
-    gap: 0.625rem;
-  }
-
-  .product-header-info h1 {
-    font-size: 1.1rem;
-  }
-
-  .search-input {
-    font-size: 0.8rem;
-    height: 36px;
-    padding-left: 32px;
-  }
-}
-
-/* ==========================================================================
-   31. LANDSCAPE ORIENTATION ADJUSTMENTS
-   ========================================================================== */
-@media (max-height: 500px) and (orientation: landscape) {
-  .hero {
-    padding: 1.5rem 1rem;
-  }
-
-  .hero h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero p {
-    font-size: 0.85rem;
-  }
-
-  .hero-badge {
-    margin-bottom: 0.75rem;
-  }
-
-  .progress-container {
-    padding: 0.5rem 0;
-  }
-
-  .celebration-content {
-    padding: 1.5rem;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-}
-
-/* ==========================================================================
-   32. iPAD SPECIFIC (Landscape) — 2 column grid locked
-   ========================================================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ==========================================================================
-   33. SAFE AREA INSETS (Notch devices like iPhone X+)
-   ========================================================================== */
-@supports (padding: env(safe-area-inset-bottom)) {
-  .app-header {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
-
-  .app-footer {
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
-  }
-
-  .actions-bar {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  .toast {
-    bottom: calc(2rem + env(safe-area-inset-bottom));
-  }
-
-  .celebration {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* ==========================================================================
-   34. TOUCH DEVICE ENHANCEMENTS
-   ========================================================================== */
-@media (hover: none) and (pointer: coarse) {
-  /* Larger touch targets */
-  .category-card,
-  .product-card {
-    min-height: 80px;
-  }
-
-  .checklist-checkbox {
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
-  }
-
-  .back-btn {
-    min-height: 44px;
-    padding: 0.5rem 0.875rem;
-  }
-
-  .btn {
-    min-height: 48px;
-    padding: 0.7rem 1.25rem;
-  }
-
-  .search-result-item {
-    min-height: 52px;
-    padding: 0.875rem 1rem;
-  }
-
-  .tips-toggle {
-    min-height: 48px;
-  }
-
-  .pro-tip-toggle {
-    min-height: 44px;
-    padding: 0.4rem 0;
-  }
-
-  /* Disable hover effects on touch — rely on active state */
-  .category-card:hover,
-  .product-card:hover {
-    transform: none;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .category-card:active,
-  .product-card:active {
-    transform: scale(0.98);
-    box-shadow: var(--shadow-xs);
-  }
-}
-
-/* ==========================================================================
-   29. PRINT MEDIA STYLESHEET
-   ========================================================================== */
-@media print {
-  .app-header,
-  .app-footer,
-  .actions-bar,
-  .back-btn,
-  .search-container,
-  #confetti-container,
-  .toast,
-  .tips-toggle,
-  .pro-tip-toggle {
-    display: none !important;
-  }
-
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
-    font-size: 12pt;
-  }
-
-  .checklist-container {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .checklist-item {
-    box-shadow: none !important;
-    border: 1px solid #d1d5db !important;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-bottom: 0.5rem !important;
-    background: #ffffff !important;
-  }
-
-  .checklist-checkbox {
-    border: 2px solid #000000 !important;
-  }
-
-  .pro-tip.expanded {
-    display: block !important;
-    max-height: none !important;
-    opacity: 1 !important;
-    border-left: 2px solid #000000 !important;
-    background: #f9fafb !important;
-  }
-
-  .progress-container {
-    position: static !important;
-    box-shadow: none !important;
-    border: 1px solid #d1d5db !important;
   }
 }
